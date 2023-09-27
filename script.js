@@ -1,9 +1,9 @@
-let booksData = [] // Array che conterrà i dati dei libri
-const Carrello = [] //
+let booksData = []
+const Carrello = [] 
+const Cover = []
 let Totale = 0
 const modalBody = document.querySelector('.modal-body')
 const TotalPrice = document.querySelector("#totale")
-
 
 function renderBooks(books) {
   const booksContainer = document.querySelector('main .row')
@@ -16,17 +16,17 @@ function renderBooks(books) {
           <div class="card-body w-100">
             <div class="d-flex flex-column justify-content-between align-items-center">
               <h6 class="text-white pe-3 title w-100">${book.title}</h6>
-              <h6 class="text-white mb-0 price w-100">${book.price}</h6>
+              <h6 class="text-white mb-0 w-100">€ <span class="price">${book.price.toFixed(2)}</span></h6>
             </div>
             <div class="d-flex align-items-center justify-content-left justify-content-md-between mt-3 g-3">
               <a onclick="Aggiunto(this)" class="btn btn-primary me-2 rounded-circle d-flex justify-content-center align-items-center">
-                <i class="bi bi-cart"></i>
-              </a>
-              <a class="btn btn-primary me-2 rounded-circle d-flex justify-content-center align-items-center">
-                <i class="bi bi-heart"></i>
+                <i class="bi bi-bag"></i>
               </a>
               <a onclick="RemoveCard(this)" class="btn btn-primary me-2 rounded-circle d-flex justify-content-center align-items-center">
-                <i class="bi bi-x-circle"></i>
+                <i class="bi bi-x-lg"></i>
+              </a>
+              <a href="dettagli.html?id=${book.asin}" class="btn btn-primary me-2 rounded-circle d-flex justify-content-center align-items-center">
+                <i class="bi bi-card-list"></i>
               </a>
             </div>
           </div>
@@ -73,16 +73,17 @@ function RemoveCard(link) {
 
 function Aggiunto(link){
     let card = link.closest('.card')
+    let carrello = document.querySelector('#cart')
     let title = card.querySelector('.title').innerHTML
     let price = card.querySelector('.price').innerHTML
-/* 
+
     for (let i = 0; i < booksData.length; i++) {
-        const element = booksData[i];
-        if(element.title.includes("title")){
-            console.log(element.price);
-        }
-        
-    } */
+      if(booksData[i].title.includes(title)){
+        Cover.push(booksData[i].img)
+      }
+      
+    }
+    
 
     card.style.border = '2px solid #4BB543'
     Carrello.push(title)
@@ -90,14 +91,21 @@ function Aggiunto(link){
     
     modalBody.innerHTML = ""
     TotalPrice.innerHTML = "Totale: "
+    carrello.innerHTML = '<i class="bi bi-basket me-3"></i>'
 
     for (let i = 0; i < Carrello.length; i++) {
         
-        modalBody.innerHTML += `<p>${i+1} - ${Carrello[i]}</p>`
+        modalBody.innerHTML += `
+            <div class="mb-2">
+                <img src="${Cover[i]}" alt="" width="40" height="40" style="object-fit:cover; object-position:center">
+                    <span class="ms-2">${i+1} - ${Carrello[i]}</span>
+            </div>
+            `
         
     }
 
     TotalPrice.innerHTML += "€ " + Totale.toFixed(2)
+    carrello.innerHTML += "€ " + Totale.toFixed(2)
 }
 
 loadBooks()
