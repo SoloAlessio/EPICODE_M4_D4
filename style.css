@@ -1,6 +1,45 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    background: linear-gradient(to right, #141E30, #243B55);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: sans-serif ;
+}
+
+.card{
+    position: relative;
+    aspect-ratio: 1/1.5;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.card:hover .card-body{
+    opacity: 1;
+    bottom: 0;
+}
+
+.card-body{
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    opacity: 0;
+    transition: all .2s ease;
+    background-image: linear-gradient(to top, black, transparent);
+}
+
+.card-body a{
+    width: 42px;
+    aspect-ratio: 1/1;
+}
+
+h6:nth-child(2){
+    min-width: 100%;
+}
+
+input[type="search"]:focus{
+    outline: none;
 }
