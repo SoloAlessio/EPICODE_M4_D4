@@ -15,6 +15,8 @@ body{
     background-position: center;
     background-size: cover;
     cursor: pointer;
+    border: 0px !important;
+    transition: all .3s ease;
 }
 
 .card:hover .card-body{
@@ -28,12 +30,22 @@ body{
     right: 0;
     opacity: 0;
     transition: all .2s ease;
-    background-image: linear-gradient(to top, black, transparent);
+    background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5), transparent);
 }
 
-.card-body a{
+.card-body a, .buttons button, .button{
+    background-color: #243B55 !important;
+    color: #fff !important;
     width: 42px;
     aspect-ratio: 1/1;
+    transition: all .2s ease;
+}
+
+.card-body a:hover, .buttons button:hover{
+    transform: scale(1.1);
+    background-color: #fff !important;
+    color: #141E30 !important;
+    box-shadow: 0 8px 32px rgba(25, 25, 25, .15);
 }
 
 h6:nth-child(2){
@@ -42,4 +54,14 @@ h6:nth-child(2){
 
 input[type="search"]:focus{
     outline: none;
+}
+
+.badge{
+    width: 24px;
+    height: 24px;
+    background-color: #4BB543;
+    display: none;
+    position: absolute;
+    top: 8px;
+    right: 8px;
 }
