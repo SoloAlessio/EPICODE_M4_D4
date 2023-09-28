@@ -82,7 +82,7 @@ function Aggiunto(link){
     Cover.push(filterBooks(title)[0].img)
     Carrello.push(filterBooks(title)[0].title)
 
-    card.style.border = "2px solid #4BB543"
+    card.style.border = "4px solid #4BB543"
     Totale += parseFloat(price)
     
     modalBody.innerHTML = ""

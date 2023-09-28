@@ -16,6 +16,5 @@ function load() {
         price.innerHTML = `$  ${body.price.toFixed(2)}`
       })
   }
-
-
+  
   load()

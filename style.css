@@ -9,7 +9,6 @@ body{
 }
 
 .card{
-    position: relative;
     aspect-ratio: 1/1.5;
     overflow: hidden;
     background-position: center;
