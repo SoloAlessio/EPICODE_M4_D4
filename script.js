@@ -57,8 +57,8 @@ document.getElementById('searchInput').addEventListener('input', function() {
 function filterBooks(query) {
     const filteredBooks = booksData.filter(book => {
       const bookTitle = book.title.toLowerCase();
-      const queryLetters = query.toLowerCase().split('');
-      return queryLetters.every(letter => bookTitle.includes(letter));
+      const queryLetters = query.toLowerCase();
+      return bookTitle.includes(queryLetters);
     });
   
     return filteredBooks;
@@ -66,45 +66,40 @@ function filterBooks(query) {
 
 function RemoveCard(link) {
     let card = link.closest('.book')
-  
-    card.style.display = 'none'
+
+    if(card){
+      card.style.display = 'none'
+    }
 }
 
 function Aggiunto(link){
-    let card = link.closest('.card')
+    const card = link.closest('.card')
     let carrello = document.querySelector('#cart')
     let title = card.querySelector('.title').innerHTML
     let price = card.querySelector('.price').innerHTML
     const TotalPrice = document.querySelector("#totale")
 
-    for (let i = 0; i < booksData.length; i++) {
-      if(booksData[i].title.includes(title)){
-        Cover.push(booksData[i].img)
-      }
-      
-    }
-    
+    Cover.push(filterBooks(title)[0].img)
+    Carrello.push(filterBooks(title)[0].title)
 
-    card.style.border = '2px solid red'
-    Carrello.push(title)
+    card.style.border = "2px solid #4BB543"
     Totale += parseFloat(price)
     
     modalBody.innerHTML = ""
-    TotalPrice.innerHTML = ""
-    carrello.innerHTML = '<i class="bi bi-basket me-3"></i>'
 
     for (let i = 0; i < Carrello.length; i++) {
         
         modalBody.innerHTML += `
-            <div class="mb-2">
-                <img src="${Cover[i]}" alt="" width="40" height="40" style="object-fit:cover; object-position:center">
-                    <span class="ms-2">  ${Carrello[i]}</span>
+            <div class="mb-3 d-flex align-items-center">
+                <img src="${Cover[i]}" alt="" width="40" height="60" style="object-fit:cover; object-position:center">
+                    <span class="ms-3 fs-6">  ${Carrello[i]}</span>
             </div>
             `
         
     }
 
-    TotalPrice.innerHTML += "$ " + Totale.toFixed(2)
+    TotalPrice.innerHTML = "$ " + Totale.toFixed(2)
+    carrello.innerHTML = '<i class="bi bi-basket me-3"></i>'
     carrello.innerHTML += "$ " + Totale.toFixed(2)
 }
 
