@@ -11,7 +11,7 @@ function renderBooks(books) {
   books.forEach(book => {
     booksContainer.innerHTML += `
       <div class="col-sm-6 col-md-4 col-lg-2 mb-3 mb-sm-0 book">
-        <div class="card mb-2" style='background-image:url(${book.img})'>
+        <div class="card" style='background-image:url(${book.img})'>
           <div class="card-body w-100">
             <div class="d-flex flex-column justify-content-between align-items-center">
               <h6 class="text-white pe-3 title w-100">${book.title}</h6>
