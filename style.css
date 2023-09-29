@@ -15,7 +15,7 @@ body{
     background-size: cover;
     cursor: pointer;
     border: 0px;
-    transition: all .3s ease;
+    transition: all .1s ease;
 }
 
 .card:hover .card-body{

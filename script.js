@@ -82,7 +82,7 @@ function Aggiunto(link){
     Cover.push(filterBooks(title)[0].img)
     Carrello.push(filterBooks(title)[0].title)
 
-    card.style.border = "4px solid #4BB543"
+    card.style.border = "2px solid #4BB543"
     Totale += parseFloat(price)
     
     modalBody.innerHTML = ""
@@ -92,7 +92,7 @@ function Aggiunto(link){
         modalBody.innerHTML += `
             <div class="mb-3 d-flex align-items-center">
                 <img src="${Cover[i]}" alt="" width="40" height="60" style="object-fit:cover; object-position:center">
-                    <span class="ms-3 fs-6">  ${Carrello[i]}</span>
+                <span class="ms-3 fs-6">  ${Carrello[i]}</span>
             </div>
             `
         
